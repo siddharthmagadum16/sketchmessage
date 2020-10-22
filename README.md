@@ -21,7 +21,7 @@ A live demo can be found [here]
   
  # Roadmap
  
- See a list of [isssues] for bugs and features which will be added to this project.
+ See a list of [issues] for bugs and features which will be added to this project.
  
  # Built with 
  
