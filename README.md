@@ -1,2 +1,30 @@
 # sketch-message
 An online drawing app where you draw to communicate. 
+
+# Demo
+
+A live demo can be found [here]
+
+
+# Getting started
+
+### Prequistes
+  - [npm]
+  - [Node.js]
+  
+### Building
+
+  - Clone the repository `git clone https://github.com/harshhhdev/snip-bin.git`
+  - Install the needed npm pacakges `npm install`
+  - Run start the server `node server.js`
+  - Navigate to [localhost:5000] in your browser.
+  
+ # Roadmap
+ 
+ See a list of [isssues] for bugs and features which will be added to this project.
+ 
+ # Built with 
+ 
+  - [Socket.io]
+  - [Node.js]
+ 
