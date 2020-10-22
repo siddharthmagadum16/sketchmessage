@@ -31,6 +31,7 @@ A live demo can be found [here]
 [here]: https://sketch-message.herokuapp.com/
 [npm]: https://www.npmjs.com/get-npm
 [Node.js]: https://nodejs.org/en/
-[Issues]: 
+[Issues]: https://github.com/harshhhdev/sketch-message/issues
+[Socket.io]: https://socket.io/
 [localhost:5000]: http://localhost:5000/
 [issues]: https://github.com/harshhhdev/sketch-message/issues
