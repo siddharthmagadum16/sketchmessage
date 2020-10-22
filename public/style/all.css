@@ -1,0 +1,13 @@
+/* Main Stylesheet */
+
+@import url("./other/main.css");
+
+/* Elements */
+
+@import url("./elements/slider.css");
+@import url("./elements/color.css");
+@import url("./elements/navbar.css");
+
+/* Libs n' other */
+
+@import url("./other/other.css");
