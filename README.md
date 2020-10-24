@@ -12,6 +12,8 @@ A live demo can be found [here]
   - [npm]
   - [Node.js]
   
+  #### Note, npm comes preinstalled with node.js - you probably don't need to install it seperately. 
+  
 ### Building
 
   - Clone the repository `git clone https://github.com/harshhhdev/snip-bin.git`
