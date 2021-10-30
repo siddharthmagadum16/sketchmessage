@@ -1,6 +1,5 @@
-let colorButton = document.getElementById("color");
-colorButton.onchange = function() {
-    localStorage.setItem("color", colorButton.value);
+const SetColour = (colour) => {
+  localStorage.setItem('colour', colour)
 }
-var val = localStorage.getItem('color')
-colorButton.value = val;
+
+SetColour('#fff')

@@ -1,77 +1,83 @@
-window.onload = function() {
-      let socket = io();
+window.onload = function () {
+  let socket = io()
 
-      let canvasContainer = document.getElementById('drawingBoard')
+  const mobile =
+    !!navigator.userAgent.match(/iphone|ipad|android|blackberry/gi) || false
 
-      let canvas = document.getElementById('drawing');
-      let ctx = canvas.getContext('2d');
+  if (mobile) {
+    document.querySelector('.error').style.display = 'flex'
+    document.querySelector('.drawingBoardContainer').style.display = 'none'
+  }
 
-      let thickness = document.getElementById('range-slider');
+  document.querySelector('canvas').width = window.innerWidth - 100
+  document.querySelector('canvas').height = window.innerHeight - 100
 
-      let width = canvas.width = window.innerWidth-40;
-      let height = canvas.height = window.innerHeight-230;
-      canvasContainer.style.width = width + 'px';
-      canvasContainer.style.height = height + 'px';
+  let canvas = document.getElementById('drawing')
+  let ctx = canvas.getContext('2d')
 
-      let mouseDown = false;
+  let mouseDown = false
 
-      const c = {
-        x: 0,
-        y: 0,
-        lastX: 0,
-        lastY:0
-      };
+  let thicknessSlider = document.querySelector('.slider')
 
-      function draw(c) {
-        ctx.beginPath();
-        ctx.strokeStyle = c.color;
-        ctx.lineWidth = c.thickness;
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
-        ctx.moveTo(c.x, c.y);
-        ctx.lineTo(c.lastX, c.lastY);
-        ctx.stroke();    
-        ctx.closePath();
-      }
+  const c = {
+    x: 0,
+    y: 0,
+    lastX: 0,
+    lastY: 0,
+  }
 
-      canvas.addEventListener('mousedown', function(e) {
-        mouseDown = true;
-        c.lastX = e.offsetX;
-        c.lastY = e.offsetY;
-      })
-      canvas.addEventListener('mouseup', function(e) {
-        mouseDown = false;
-      });
+  const draw = (c) => {
+    ctx.beginPath()
+    ctx.strokeStyle = c.color
+    ctx.lineWidth = c.thickness
+    ctx.lineJoin = 'round'
+    ctx.lineCap = 'round'
+    ctx.moveTo(c.x, c.y)
+    ctx.lineTo(c.lastX, c.lastY)
+    ctx.stroke()
+    ctx.closePath()
+  }
 
+  canvas.addEventListener('mousedown', (e) => {
+    mouseDown = true
+    c.lastX = e.offsetX
+    c.lastY = e.offsetY
+  })
+  canvas.addEventListener('mouseup', (e) => {
+    mouseDown = false
+  })
 
-      let cBounds = canvas.getBoundingClientRect();
-      socket.emit('mouse', c );
+  socket.emit('mouse', c)
 
-      let fakeE = {
-        offsetX : 0,
-        offsetY : 0,
-        touches : [{clientX : 0,clientY : 0}]
-      }
-      socket.emit('mouse', c );
-      socket.on('mouse', function(data) {
-        draw(data);
-      });
-      function sketch(e) {
-        if (!mouseDown) return;
+  socket.emit('mouse', c)
+  socket.on('mouse', (data) => {
+    draw(data)
+  })
+  const sketch = (e) => {
+    if (!mouseDown) return
 
-        c.x = e.offsetX;
-        c.y = e.offsetY;
+    c.x = e.offsetX
+    c.y = e.offsetY
 
-        c.color = color.value;
-        c.thickness = parseInt(thickness.value);
-        
-        socket.emit('mouse', c );
-        socket.on('mouse', function(data) {
-          draw(data);
-        });
+    c.color = localStorage.getItem('colour')
+    c.thickness = parseInt(thicknessSlider.value)
 
-        c.lastX = c.x;
-        c.lastY = c.y;
-      }
-      canvas.addEventListener('mousemove', sketch);
-    }
+    socket.emit('mouse', c)
+    socket.on('mouse', function (data) {
+      draw(data)
+    })
+
+    let rect = canvas.getBoundingClientRect()
+    let x = e.clientX - rect.left
+    let y = e.clientY - rect.top
+
+    c.lastX = x
+    c.lastY = y
+  }
+
+  canvas.addEventListener('mousemove', sketch)
+
+  document.querySelector('.clear').addEventListener('click', () => {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  })
+}

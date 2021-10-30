@@ -1,63 +1,78 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Sketch Message</title>
+    <meta name="title" content="Sketch Message" />
+    <meta property="og:title" content="Sketch Message" />
+    <meta property="twitter:title" content="Sketch Message" />
+    <meta
+      name="description"
+      content="A chat application where you draw to communciate with people all over the world."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sketch-messsage.herokuapp.com/" />
+    <meta
+      property="og:description"
+      content="A chat application where you draw to communciate with people all over the world."
+    />
+    <meta
+      property="twitter:url"
+      content="https://sketch-message.herokuapp.com/"
+    />
+    <meta
+      property="twitter:description"
+      content="A chat application where you draw to communciate with people all over the world."
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#2395ff" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>"
+    />
 
-<head>
-  <title>Sketch Message</title>
-  <meta name="title" content="Sketch Message" />
-  <meta property="og:title" content="Sketch Message" />
-  <meta property="twitter:title" content="Sketch Message" />
-  <meta name="description" content="A chat application where you draw to communciate with people all over the world." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sketch-messsage.herokuapp.com/" />
-  <meta property="og:description"
-    content="A chat application where you draw to communciate with people all over the world." />
-  <meta property="twitter:url" content="https://sketch-message.herokuapp.com/" />
-  <meta property="twitter:description"
-    content="A chat application where you draw to communciate with people all over the world." />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="theme-color" content="#2395ff" />
+    <script src="/socket.io/socket.io.js"></script>
+    <link href="./public/style/main.css" rel="stylesheet" />
+  </head>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-  <link href="./public/style/all.css" rel="stylesheet" />
-
-</head>
-
-<body class="light" id="background">
-  <nav>
-    <button class="toggle" onclick="toggleModes()" id="toggle">Go Dark</button>
-    <button class="toggle"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-        data-text="Hello everyone! I&#39;m having a blast of fun drawing around with people in #sketchmessage, made by @Harshhhdev! Join in on the fun!"
-        data-show-count="false" target="__blank" style="text-decoration: none;">Share On Twitter!</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></button>
-  </nav>
-  <div id="drawingBoard">
-    <canvas id="drawing"></canvas>
-  </div>
-  <footer>
-    <div class="container">
-      <div class="settings">
-        <div class="colour">
-          <h1>Brush Colour</h1>
-          <div class="colour-slider">
-            <input type="color" id="color" class="colour">
-          </div>
-        </div>
-        <div class="thickness">
-          <h1>Brush Thickness</h1>
-          <div class="thickness-slider">
-            <input class="slider" id="range-slider" type="range" min="1" step="0.01" max="100" value="10">
-          </div>
-        </div>
+  <body class="light" id="background">
+    <div class="error">
+      <h1>Whoops!</h1>
+      <p>
+        SketchMessage isn't supported on touchscreens... yet! Try it out on your
+        PC or laptop.
+      </p>
+    </div>
+    <div class="drawingBoardContainer">
+      <h1>SketchMessage</h1>
+      <div id="drawingBoard">
+        <canvas id="drawing"></canvas>
       </div>
-  </footer>
-  </div>
-</body>
+      <div class="colours">
+        <div class="colour red" onclick="SetColour('#ff5d5d')"></div>
+        <div class="colour orange" onclick="SetColour('#ffb95d')"></div>
+        <div class="colour yellow" onclick="SetColour('#fdff7b')"></div>
+        <div class="colour green" onclick="SetColour('#7bff91')"></div>
+        <div class="colour cyan" onclick="SetColour('#7bffff')"></div>
+        <div class="colour blue" onclick="SetColour('#56b3ff')"></div>
+        <div class="colour violet" onclick="SetColour('#ca7bff')"></div>
+        <div class="colour pink" onclick="SetColour('#ff9efa')"></div>
+        <div class="colour white" onclick="SetColour('#ffffff')"></div>
+        <div class="colour black" onclick="SetColour('#24242b')"></div>
+      </div>
+      <input
+        class="slider"
+        type="range"
+        min="1"
+        step="0.01"
+        max="50"
+        value="5"
+      />
+      <button class="clear">Clear Board</button>
+    </div>
+  </body>
 
-<script src="./public/scripts/colour.js"></script>
-<script src="./public/scripts/themes.js"></script>
-<script src="./public/scripts/main.js"></script>
-
+  <script src="./public/scripts/main.js"></script>
+  <script src="./public/scripts/colour.js"></script>
 </html>

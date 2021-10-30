@@ -4,12 +4,16 @@
   "description": "A drawing ap where you draw to communicate.",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "author": "Harsh Singh",
   "license": "MIT",
   "dependencies": {
-    "socket.io": "^3.0.0",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "socket.io": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }
