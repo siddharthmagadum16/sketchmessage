@@ -1,39 +1,38 @@
 # sketch-message
-An online drawing app where you draw to communicate. 
 
-# Demo
+An online drawing app where you draw to communicate
 
-A live demo can be found [here]
+# 🚀 Quickstart 
 
+Running website + development server locally
 
-# Getting started
+```bash
+git clone https://github.com/harshhhdev/sketchmessage.git
+cd sketchmessage
 
-### Prequistes
-  - [npm]
-  - [Node.js]
-  
-  #### Note, npm comes preinstalled with node.js - you probably don't need to install it seperately. 
-  
-### Building
+# Install deps
+yarn
 
-  - Clone the repository `git clone https://github.com/harshhhdev/snip-bin.git`
-  - Install the needed npm pacakges `npm install`
-  - Run start the server `node server.js`
-  - Navigate to [localhost:5000] in your browser.
-  
- # Roadmap
- 
- See a list of [issues] for bugs and features which will be added to this project.
- 
- # Built with 
- 
-  - [Socket.io]
-  - [Node.js]
- 
-[here]: https://sketch-message.herokuapp.com/
-[npm]: https://www.npmjs.com/get-npm
-[Node.js]: https://nodejs.org/en/
-[Issues]: https://github.com/harshhhdev/sketch-message/issues
-[Socket.io]: https://socket.io/
-[localhost:5000]: http://localhost:5000/
-[issues]: https://github.com/harshhhdev/sketch-message/issues
+# Start development server
+yarn dev
+```
+
+The development server should start on [localhost](https://localhost:3000)
+
+# 🔧 Tools Used
+
+ - [Socket.io](https://socket.io/)
+ - [Node.js](https://nodejs.org/)
+ - [Prettier](https://prettier.io/)
+ - [ESLint](https://eslint.org/)
+
+# 🤞 Contributing
+
+After setting up the project, and making changes:
+
+```git
+git add .
+git commit -m "commit message"
+git push YOUR_REPO_URL YOUR_BRANCH
+```
+
