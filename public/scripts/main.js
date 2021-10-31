@@ -24,6 +24,8 @@ window.onload = () => {
     y: 0,
     lastX: 0,
     lastY: 0,
+    color: '#ffff',
+    thickness: 5,
   }
 
   const draw = (c) => {
@@ -43,7 +45,8 @@ window.onload = () => {
     c.lastX = e.offsetX
     c.lastY = e.offsetY
   })
-  canvas.addEventListener('mouseup', (e) => {
+
+  window.addEventListener('mouseup', (e) => {
     mouseDown = false
   })
 
